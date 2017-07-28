@@ -8,6 +8,7 @@ import {
 import './index.css';
 import App from './components/App';
 import Stuff from './components/Stuff';
+import MainPage from './components/MainPage';
 import registerServiceWorker from './registerServiceWorker';
 
 const router = (
