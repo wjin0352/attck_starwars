@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
-import Stuff from './components/Stuff';
+import CharacterCard from './components/CharacterCard';
 import MainPage from './components/MainPage';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -15,7 +15,7 @@ const router = (
   <BrowserRouter> 
     <Switch>
       <Route exact path="/" component={App}/>
-      <Route path="/stuff" component={Stuff}/>
+      <Route path="/characters" component={CharacterCard}/>
     </Switch>
   </BrowserRouter>
 )

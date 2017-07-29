@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import data from '../utils/characters';
+import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 class MainPage extends Component {
@@ -11,12 +12,14 @@ class MainPage extends Component {
 
   getCharacter(url) {
     console.log(url)
+    // redirect to CharacterCard component
+    this.props.history.push('/characters');
   }
 
-  showCharacters() {
+  showCharacters = () => {
     const list = data.characters.map((val, idx) => {
       return (
-        <div className="characters_list" key={val.url} onClick={this.getCharacter(val.url)}>
+        <div className="characters_list" key={val.url} onClick={() => this.getCharacter(val.url)}>
           <h4>{val.name}</h4>
         </div>
       );
@@ -36,4 +39,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default withRouter(MainPage);
