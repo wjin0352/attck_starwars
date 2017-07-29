@@ -18,7 +18,6 @@ class MainPage extends Component {
       pathname: '/characters',
       state: { url: url }
     });
-    
   }
 
   showCharacters = () => {
