@@ -11,9 +11,7 @@ class MainPage extends Component {
   }
 
   getCharacter(url) {
-    console.log(url)
     // redirect to CharacterCard component
-    // this.props.history.push('/characters');
     this.props.history.push({
       pathname: '/characters',
       state: { url: url }

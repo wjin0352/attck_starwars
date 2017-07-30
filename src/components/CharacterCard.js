@@ -1,60 +1,65 @@
 import React, { Component } from 'react';
+import { Redirect, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 class CharacterCard extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      results: '' 
+      results: {},
+      error: ''
     }  
-
     this.getCharacterInfo = this.getCharacterInfo.bind(this);
   }
 
-  componentDidMount(props) {
+  componentWillMount(props) {
     this.getCharacterInfo(props)
   }
 
   getCharacterInfo() {
-    console.log(this.props.location.state)
+    // console.log(this.props.location.state)
     const endpt = this.props.location.state.url;
+
     axios.get(`${endpt}`)
       .then((res) => {
-        console.log(res.data.films);
+        console.log('res: ', res)
         var characterData = res.data;
         var films = res.data.films;
         var filmsRequests = [];
         films.forEach((filmApiEndPt) => {
-          // console.log('val, ', val);
           filmsRequests.push(axios.get(`${filmApiEndPt}`));
         })
         return Promise.all(filmsRequests)
           .catch((err) => {
-          console.log('failed Promise.all, ', err);
+          console.log('Failed Promise.all, ', err);
           })
           .then((movies) => {
-            console.log('successful Promise.all, ', movies)
-            console.log('character Data, ', characterData)
-            var results = {
-              characterData,
-              movies
-            }
-            this.setState({ results });
+            this.setState({
+              results: {
+                characterData,
+                movies
+              }
+            })
           })
       })
       .catch((err) => {
-        console.log(err)
+        console.log('err: ', err)
+        this.props.history.push({
+          pathname: '/404'
+        })
       })
   }
+
   render() {
-    
+    // if (this.state.results)
+    // console.log(results)
     return (
       <div>
         <h3>Character</h3>
-       {console.log(this.state.results)}
+        {console.log(this.state.results)}
       </div>
     );
   }
 }
 
-export default CharacterCard;
+export default withRouter(CharacterCard);

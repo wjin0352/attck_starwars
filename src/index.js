@@ -10,6 +10,7 @@ import './index.css';
 import App from './components/App';
 import CharacterCard from './components/CharacterCard';
 import MainPage from './components/MainPage';
+import NotFound from './components/NotFound';
 import registerServiceWorker from './registerServiceWorker';
 
 const router = (
@@ -17,6 +18,7 @@ const router = (
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/characters" component={CharacterCard} />
+      <Route path="/404" component={NotFound} />
       <Redirect path="*" to="/" />
     </Switch>
   </BrowserRouter>
