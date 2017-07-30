@@ -6,9 +6,10 @@ class CharacterCard extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      results: {},
-      error: ''
+      results: {}
     }  
+
+    let loaded = false;
     this.getCharacterInfo = this.getCharacterInfo.bind(this);
   }
 
@@ -52,7 +53,11 @@ class CharacterCard extends Component {
 
   render() {
     // if (this.state.results)
-    // console.log(results)
+    console.log('empty? ',Object.keys(this.state.results).length === 0)
+    if (Object.keys(this.state.results).length === 0) {   
+      return (<div><h5>Loading...</h5></div>);
+    };
+    // console.log('loaded: ', this.state.results)
     return (
       <div>
         <h3>Character</h3>
