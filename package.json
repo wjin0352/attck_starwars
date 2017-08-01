@@ -10,7 +10,6 @@
     "react-spinner": "^0.2.7"
   },
   "devDependencies": {
-    "react-scripts": "1.0.10"
   },
   "scripts": {
     "predeploy": "npm run build",
