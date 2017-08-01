@@ -17,7 +17,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "homepage": "https://wjin0352.github.io/attck_starwars"
+    "eject": "react-scripts eject" 
+  }
 }
