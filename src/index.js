@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
+import NavBar from './components/NavBar';
 import CharacterCard from './components/CharacterCard';
 import MainPage from './components/MainPage';
 import NotFound from './components/NotFound';
@@ -15,12 +16,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 const router = (
   <BrowserRouter> 
-    <Switch>
-      <Route exact path="/" component={App} />
-      <Route path="/characters" component={CharacterCard} />
-      <Route path="/404" component={NotFound} />
-      <Redirect path="*" to="/" />
-    </Switch>
+    <App />
   </BrowserRouter>
 )
 

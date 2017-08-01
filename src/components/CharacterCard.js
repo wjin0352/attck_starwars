@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, withRouter, Route } from 'react-router-dom';
+import MainPage from './MainPage';
+import MovieCard from './MovieCard';
 import axios from 'axios';
+import Spinner from 'react-spinner';
 
 class CharacterCard extends Component {
   constructor(props) {
@@ -18,7 +21,6 @@ class CharacterCard extends Component {
   }
 
   getCharacterInfo() {
-    // console.log(this.props.location.state)
     const endpt = this.props.location.state.url;
 
     axios.get(`${endpt}`)
@@ -27,12 +29,14 @@ class CharacterCard extends Component {
         var characterData = res.data;
         var films = res.data.films;
         var filmsRequests = [];
+
         films.forEach((filmApiEndPt) => {
           filmsRequests.push(axios.get(`${filmApiEndPt}`));
         })
-        return Promise.all(filmsRequests)
+
+        Promise.all(filmsRequests)
           .catch((err) => {
-          console.log('Failed Promise.all, ', err);
+          console.log('Promise.all request Error: ', err);
           })
           .then((movies) => {
             this.setState({
@@ -44,7 +48,7 @@ class CharacterCard extends Component {
           })
       })
       .catch((err) => {
-        console.log('err: ', err)
+        console.log('Initial Request Error: ', err)
         this.props.history.push({
           pathname: '/404'
         })
@@ -52,16 +56,51 @@ class CharacterCard extends Component {
   }
 
   render() {
-    // if (this.state.results)
-    console.log('empty? ',Object.keys(this.state.results).length === 0)
-    if (Object.keys(this.state.results).length === 0) {   
-      return (<div><h5>Loading...</h5></div>);
+    const { results } = this.state;
+    if (Object.keys(results).length === 0) {   
+      return (<div className="loading_screen">Loading...</div>);
     };
-    // console.log('loaded: ', this.state.results)
+    
     return (
       <div>
-        <h3>Character</h3>
-        {console.log(this.state.results)}
+        <div className="character_card_name">
+          <h3>{results.characterData.name}</h3>
+        </div>
+
+        <table className="character_table striped centered">
+          <tbody>
+            <tr>
+              <td>Height:</td>
+              <td>{results.characterData.height}</td>
+            </tr>
+            <tr>
+              <td>Mass:</td>
+              <td>{results.characterData.mass}</td>
+            </tr>
+            <tr>
+              <td>Hair Color:</td>
+              <td>{results.characterData.hair_color}</td>
+            </tr>
+            <tr>
+              <td>Gender:</td>
+              <td>{results.characterData.gender}</td>
+            </tr>
+            <tr>
+              <td>Eye Color:</td>
+              <td>{results.characterData.eye_color}</td>
+            </tr>
+            <tr>
+              <td>Skin Color:</td>
+              <td>{results.characterData.skin_color}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <MovieCard movie={results.movies[0].data}/>
+        <MovieCard movie={results.movies[1].data}/>
+        <MovieCard movie={results.movies[2].data}/>
+
+        
       </div>
     );
   }

@@ -3,3 +3,21 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* Character Card table */
+  .character_table {
+    width: 50%;
+    margin: 0 auto;
+    border: 1px solid grey;
+  }
+
+/* Character Card */
+  .character_card {
+    height: 500px;
+  }
+
+/* MovieCard */
+  .movie_card {
+    display:inline-block;
+    float:none !important;
+  }

@@ -7,7 +7,7 @@ class NotFound extends Component {
     const error = this.props.location.state;
     return (
       <div className="not_found">
-        <h4>Sorry Nothing Found.</h4>
+        <h5>Sorry mysteriously nothing was found.</h5>
         <Link to="/">Home</Link>
       </div>
     );
