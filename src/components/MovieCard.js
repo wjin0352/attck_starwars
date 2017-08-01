@@ -7,6 +7,7 @@ class MovieCard extends Component {
 
   render() {
     const date = new Date(this.props.movie.release_date);
+    
     return (
       <div className="row activator" >
         <div className="col s12 m6 movie_card">

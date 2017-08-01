@@ -31,7 +31,7 @@ class MainPage extends Component {
       return (
         <div className="characters_list" key={val.url} onClick={() => this.getCharacter(val.url)}>
           <a className="collection-item">
-            <h4 className="grey-text">
+            <h4 className="black-text main_text">
               {val.name}
             </h4>
           </a>

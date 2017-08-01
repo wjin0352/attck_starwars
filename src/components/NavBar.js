@@ -7,7 +7,7 @@ class NavBar extends Component {
       <div className="nav_bar">
         <nav>
           <div className="nav-wrapper blue hoverable">
-            <Link to="/"><a href="" className="brand-logo center"><i className="large material-icons">movie_filter</i>StarWars Database</a></Link>
+            <Link to="/"><a href="" className="brand-logo center title_nav"><i className="large material-icons">movie_filter</i>StarWars Database</a></Link>
             <ul className="left hide-on-med-and-down">
               <Link to="/">
                 <li><a className="waves-effect waves-light waves-red">Home</a></li>

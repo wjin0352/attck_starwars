@@ -4,16 +4,25 @@ body {
   font-family: sans-serif;
 }
 
+/* MainPage */
+  .main_page {
+    width:60%;
+    margin: 5em auto;
+  }
+
+  .main_text {
+  }
+
 /* Character Card table */
   .character_table {
     width: 50%;
-    margin: 0 auto;
+    margin: 3em auto;
     border: 1px solid grey;
   }
 
 /* Character Card */
   .character_card {
-    height: 500px;
+    height: 600px;
   }
 
 /* MovieCard */
@@ -21,3 +30,43 @@ body {
     display:inline-block;
     float:none !important;
   }
+
+  .card {
+    padding: 1em;
+  }
+  
+
+/* Loading Screen for Character Cards */
+  .loading_screen {
+    padding: 5em 0;
+    margin: 2em auto;
+  }
+
+/* NotFound Component 404 */
+  .not_found {
+    padding: 5em 0;
+    margin: 3em auto;
+  }
+
+/* Media query */
+@media only screen and (max-width : 650px) {
+
+  /* navbar title */
+  a.title_nav {
+    font-size: 18px;
+    color: orange;
+  }
+
+  /* mainpage */
+    .main_page {
+      width: 90%;
+    }
+
+    .character_table {
+      width:70%;
+    }
+
+    .main_text {
+      font-size: 23px;
+    }
+}

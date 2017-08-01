@@ -14,6 +14,7 @@ class CharacterCard extends Component {
 
     let loaded = false;
     this.getCharacterInfo = this.getCharacterInfo.bind(this);
+    this.prepareMovieCards = this.prepareMovieCards.bind(this);
   }
 
   componentWillMount(props) {
@@ -25,7 +26,6 @@ class CharacterCard extends Component {
 
     axios.get(`${endpt}`)
       .then((res) => {
-        console.log('res: ', res)
         var characterData = res.data;
         var films = res.data.films;
         var filmsRequests = [];
@@ -55,10 +55,60 @@ class CharacterCard extends Component {
       })
   }
 
+  characterInfoTable() {
+    const { results } = this.state;
+    return (
+      <table className="character_table striped centered">
+        <tbody>
+          <tr>
+            <td>Height:</td>
+            <td>{results.characterData.height}</td>
+          </tr>
+          <tr>
+            <td>Mass:</td>
+            <td>{results.characterData.mass}</td>
+          </tr>
+          <tr>
+            <td>Hair Color:</td>
+            <td>{results.characterData.hair_color}</td>
+          </tr>
+          <tr>
+            <td>Gender:</td>
+            <td>{results.characterData.gender}</td>
+          </tr>
+          <tr>
+            <td>Eye Color:</td>
+            <td>{results.characterData.eye_color}</td>
+          </tr>
+          <tr>
+            <td>Skin Color:</td>
+            <td>{results.characterData.skin_color}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+  
+  prepareMovieCards() {
+    const { movies } = this.state.results;
+    return (
+      <div>
+        { 
+          movies.map((obj) => (
+            <MovieCard movie={obj.data} key={obj._id} />
+          ))
+        }
+      </div>
+    );
+  }
+
   render() {
     const { results } = this.state;
+    const { movies } = this.state.results;
+
+    // Logic to show user 'loading' screen until movies have loaded
     if (Object.keys(results).length === 0) {   
-      return (<div className="loading_screen">Loading...</div>);
+      return (<div className="loading_screen"><h5>Loading...</h5></div>);
     };
     
     return (
@@ -67,40 +117,9 @@ class CharacterCard extends Component {
           <h3>{results.characterData.name}</h3>
         </div>
 
-        <table className="character_table striped centered">
-          <tbody>
-            <tr>
-              <td>Height:</td>
-              <td>{results.characterData.height}</td>
-            </tr>
-            <tr>
-              <td>Mass:</td>
-              <td>{results.characterData.mass}</td>
-            </tr>
-            <tr>
-              <td>Hair Color:</td>
-              <td>{results.characterData.hair_color}</td>
-            </tr>
-            <tr>
-              <td>Gender:</td>
-              <td>{results.characterData.gender}</td>
-            </tr>
-            <tr>
-              <td>Eye Color:</td>
-              <td>{results.characterData.eye_color}</td>
-            </tr>
-            <tr>
-              <td>Skin Color:</td>
-              <td>{results.characterData.skin_color}</td>
-            </tr>
-          </tbody>
-        </table>
+        {this.characterInfoTable()}
 
-        <MovieCard movie={results.movies[0].data}/>
-        <MovieCard movie={results.movies[1].data}/>
-        <MovieCard movie={results.movies[2].data}/>
-
-        
+        {this.prepareMovieCards()}
       </div>
     );
   }
