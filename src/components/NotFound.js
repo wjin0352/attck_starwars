@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class NotFound extends Component {
 
   render() {
-    const error = this.props.location.state;
+    // const error = this.props.location.state;
     return (
       <div className="not_found">
         <h5>Sorry mysteriously nothing was found.</h5>
