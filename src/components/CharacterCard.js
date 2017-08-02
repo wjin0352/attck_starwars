@@ -1,6 +1,8 @@
+// @flow
+
 import React, { Component } from 'react';
-import { Redirect, withRouter, Route } from 'react-router-dom';
-import MainPage from './MainPage';
+import { string } from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import axios from 'axios';
 import Spinner from 'react-spinner';
@@ -12,7 +14,6 @@ class CharacterCard extends Component {
       results: {}
     }  
 
-    let loaded = false;
     this.getCharacterInfo = this.getCharacterInfo.bind(this);
     this.prepareMovieCards = this.prepareMovieCards.bind(this);
   }
@@ -104,7 +105,6 @@ class CharacterCard extends Component {
 
   render() {
     const { results } = this.state;
-    const { movies } = this.state.results;
 
     // Logic to show user 'loading' screen until movies have loaded
     if (Object.keys(results).length === 0) {   

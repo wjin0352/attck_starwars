@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
 class MovieCard extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const date = new Date(this.props.movie.release_date);

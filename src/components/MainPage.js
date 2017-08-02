@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
 import data from '../utils/characters';
 import { 
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
   withRouter
 } from 'react-router-dom';
-import CharacterCard from './CharacterCard';
-import NotFound from './NotFound';
-import axios from 'axios';
 
 class MainPage extends Component {
   constructor(props) {

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { 
-  BrowserRouter,
   Switch,
-  Route,
-  Redirect
+  Route
 } from 'react-router-dom';
 import CharacterCard from './CharacterCard';
 import MainPage from './MainPage';
