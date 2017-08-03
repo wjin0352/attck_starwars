@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { object } from 'prop-types';
 import data from '../utils/characters';
 import { 
   withRouter
@@ -44,5 +45,9 @@ class MainPage extends Component {
     );
   }
 }
+
+MainPage.propTypes = {
+  history: object.isRequired
+};
 
 export default withRouter(MainPage);
