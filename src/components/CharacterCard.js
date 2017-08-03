@@ -1,11 +1,10 @@
 // @flow
 
 import React, { Component } from 'react';
-import { string } from 'prop-types';
+import { shape, object } from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import MovieCard from './MovieCard';
 import axios from 'axios';
-import Spinner from 'react-spinner';
 
 class CharacterCard extends Component {
   constructor(props) {
@@ -96,7 +95,7 @@ class CharacterCard extends Component {
       <div>
         { 
           movies.map((obj) => (
-            <MovieCard movie={obj.data} key={obj._id} />
+            <MovieCard movie={obj.data} key={obj.data.created} />
           ))
         }
       </div>
@@ -124,5 +123,12 @@ class CharacterCard extends Component {
     );
   }
 }
+
+CharacterCard.propTypes = {
+  location: shape({
+    state: object.isRequired
+  }),
+  history: object.isRequired 
+};
 
 export default withRouter(CharacterCard);
