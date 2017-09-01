@@ -1,7 +1,7 @@
-// React router 4 issues https://github.com/ReactTraining/react-router/issues/4671
+`https://wjin0352.github.io/attck_starwars/`
 
-Angular/React Developer Code Test
-
+##Angular/React Developer Code Test
+```
 Instructions
 Use the Star Wars API swapi.co to generate a list of the films that a particular character appears in.
 
@@ -14,10 +14,10 @@ Don't load the movie data until the character is clicked
 Don't show any movie information until all of the character's movies have loaded
 Use css to make it pretty, styling is up to you!
 
-Frameworks you can use
-Angular 1.x
-Angular 2
-React
+  Frameworks you can use
+  Angular 1.x
+  Angular 2
+  React
 
 Feel free to use any function library you'd like. If you have feedback about the exercise, please include it.
 characters.json
@@ -36,4 +36,4 @@ characters.json
     "url": "https://swapi.co/api/people/2/"
   }]
 }
-
+```
